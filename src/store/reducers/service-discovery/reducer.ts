@@ -1,15 +1,6 @@
 /* eslint-disable */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface ETCDMiddleware {
-    availableETCDMachines: string;
-    dialTimeOut?: number;
-    dialKeepAlive?: number;
-    timeOutPerReq?: number;
-    certificate?: string;
-    privKey?: string;
-    caCert?: string;
-}
+import { ETCDMiddleware } from './interfaces';
 
 const initialState: ETCDMiddleware = {
     availableETCDMachines: '',

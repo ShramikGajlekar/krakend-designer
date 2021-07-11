@@ -1,77 +1,14 @@
 /* eslint-disable */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface HostInfo {
-    disableSanitize: boolean;
-    hostAddress: string;
-}
-
-interface AvailableServiceHosts {
-    serviceDiscovery: string;
-    hosts: HostInfo[];
-}
-
-interface HTTPServerSettings {
-    port?: number;
-    enableHTTPS?: boolean;
-    httpReadTimeOut?: number;
-    httpWriteTimeOut?: number;
-    httpIdleTimeOut?: number;
-    httpReadHeaderTimeOut?: number;
-}
-
-interface TimeOutsAndTTL {
-    backendTimeOut?: number;
-    defaultCacheTTL?: number;
-}
-
-interface Options {
-    outputEncoding?: string;
-    allowNonRest?: boolean;
-}
-
-interface BotDetector {
-    enable?: boolean;
-    whitelist?: string[];
-    blacklist?: string[];
-    patterns?: string[];
-    cacheSize?: number[];
-}
-
-interface AdvHTTPClientTimeouts {
-    idleConnectionTimeOut?: number;
-    responseHeaderTimeOut?: number;
-    expectContinueTimeOut?: number;
-}
-
-interface AdvHTTPClientConnections {
-    maxIdleConn?: number;
-    maxIdleConnPerHost?: number;
-    disableKeepAlives?: boolean;
-    disableCompression?: boolean;
-}
-
-interface AdvHTTPClientDial {
-    dialerTimeOut?: number;
-    dialerFallbackDelay?: number;
-    dialerKeepAlive?: number;
-}
-
-interface HTTPClientSettings {
-    timeouts?: AdvHTTPClientTimeouts;
-    connections?: AdvHTTPClientConnections;
-    dialSettings?: AdvHTTPClientDial;
-}
-
-interface ServiceConfig {
-    serviceName: string;
-    availableHosts: AvailableServiceHosts;
-    httpServerSettings?: HTTPServerSettings;
-    timeoutsAndTTL?: TimeOutsAndTTL;
-    options: Options;
-    botDetector?: BotDetector;
-    httpClientSettings?: HTTPClientSettings;
-}
+import {
+    BotDetector,
+    HostInfo,
+    HTTPClientSettings,
+    HTTPServerSettings,
+    Options,
+    ServiceConfig,
+    TimeOutsAndTTL,
+} from './interfaces';
 
 const initialState: ServiceConfig = {
     serviceName: '',

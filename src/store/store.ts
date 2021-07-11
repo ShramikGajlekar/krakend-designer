@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { configureStore } from '@reduxjs/toolkit';
-import serviceConfigReducer from './reducers/service-config';
+import serviceConfigReducer from './reducers/service-config/reducer';
 
 export const store = configureStore({
     reducer: {

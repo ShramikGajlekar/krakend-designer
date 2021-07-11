@@ -1,23 +1,20 @@
-/* eslint-disable */
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface RateLimiting {
+export interface RateLimiting {
     enabled: boolean;
     rateLimit: number;
     defaultUserQuota: number;
 }
 
-interface TimeOutAndCacheTTL {
+export interface TimeOutAndCacheTTL {
     timeout: string;
     cacheTTL: string;
 }
 
-interface CustomeCiphers {
+export interface CustomeCiphers {
     enabled: boolean;
     customCiphers: string[];
 }
 
-interface JWTValidation {
+export interface JWTValidation {
     algorithm: string;
     jwkURI: string;
     scopesToValidate: string;
@@ -32,30 +29,30 @@ interface JWTValidation {
     customCipherSuites: CustomeCiphers;
 }
 
-interface BackendRateLimiting {
+export interface BackendRateLimiting {
     maxRateLimit: number;
     capacity: number;
 }
 
-interface BackendRespAttrRenaming {
+export interface BackendRespAttrRenaming {
     originalAttr: string;
     renamedAttr: string;
 }
 
-interface RespObjectManipulation {
+export interface RespObjectManipulation {
     filteringMode: string;
     filterList: string[];
     capturingGroup: string;
     renaming: BackendRespAttrRenaming[];
 }
 
-interface RespArrayManipulation {
+export interface RespArrayManipulation {
     operationType: string;
     originalAttr: string;
     targetAttr: string;
 }
 
-interface AMQPConsumer {
+export interface AMQPConsumer {
     queueName: string;
     exchange: string;
     routingKeys: string[];
@@ -66,7 +63,7 @@ interface AMQPConsumer {
     noLocal: boolean;
 }
 
-interface AMQPProducer {
+export interface AMQPProducer {
     queueName: string;
     exchange: string;
     durable: boolean;
@@ -77,12 +74,12 @@ interface AMQPProducer {
     immediate: boolean;
 }
 
-interface PubSub {
+export interface PubSub {
     type: string;
     url: string;
 }
 
-interface AWSLambda {
+export interface AWSLambda {
     functionName: string;
     functionParamName: string;
     region: string;
@@ -90,7 +87,7 @@ interface AWSLambda {
     endpoint: string;
 }
 
-interface CircuitBreaker {
+export interface CircuitBreaker {
     name: string;
     logOnStateChange: boolean;
     interval: number;
@@ -98,12 +95,12 @@ interface CircuitBreaker {
     maxErrors: number;
 }
 
-interface AuthAdditionEndpointParam {
+export interface AuthAdditionEndpointParam {
     name: string;
     value: string;
 }
 
-interface EndpointBackendAuthorization {
+export interface EndpointBackendAuthorization {
     clientID: string;
     clientSecret: string;
     tokenURL: string;
@@ -111,7 +108,7 @@ interface EndpointBackendAuthorization {
     additionalEndpointParameters: AuthAdditionEndpointParam[];
 }
 
-interface BackendApiCalls {
+export interface BackendApiCalls {
     enableSequentialProxy?: boolean;
     hostResolution: string;
     hosts: string[];
@@ -135,12 +132,12 @@ interface BackendApiCalls {
     authorization?: EndpointBackendAuthorization;
 }
 
-interface StubResponse {
+export interface StubResponse {
     response: string;
     strategy: string;
 }
 
-interface EndpointInfo {
+export interface EndpointInfo {
     endpoint: string;
     method: string;
     output: string;
@@ -157,24 +154,7 @@ interface EndpointInfo {
     stubResponse?: StubResponse;
 }
 
-interface EditEndpoint {
+export interface EditEndpoint {
     index: number;
     endpoint: EndpointInfo;
 }
-
-const initialState: EndpointInfo[] = [];
-
-const endpointsSlice = createSlice({
-    name: 'endpoints',
-    initialState,
-    reducers: {
-        addEndpoints(state, action: PayloadAction<EndpointInfo>) {
-            state.push(action.payload);
-        },
-        modifyEndpoint(state, action: PayloadAction<EditEndpoint>) {
-            state[action.payload.index] = action.payload.endpoint;
-        },
-    },
-});
-export const { addEndpoints, modifyEndpoint } = endpointsSlice.actions;
-export default endpointsSlice.reducer;
