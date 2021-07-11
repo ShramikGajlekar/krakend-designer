@@ -1,3 +1,18 @@
+export interface ObservabilityState {
+    logging?: Logging;
+    gelf?: GELF;
+    metrics?: Metrics;
+    openCensus?: OpenCensus;
+    influxDBConf?: InfluxDBConf;
+    zipkinConf?: ZipkinConf;
+    jaegerConf?: JaegerConf;
+    prometheusConf?: PrometheusConf;
+    awsXRAYConf?: AWSXRayConf;
+    stackdriverConf?: StackDriverConf;
+    datadogConf?: DatadogConf;
+    ocagentConf?: OcagentConf;
+    instana?: Instana;
+}
 export interface Logging {
     level: string;
     prefix: string;

@@ -1,5 +1,8 @@
 /* eslint-disable */
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+export interface SecurityOptionsState {
+    oauthSetting?: OauthSettings;
+    securityHeaders?: SecurityHeaders;
+}
 
 export interface OauthSettings {
     enableOauth: boolean;
