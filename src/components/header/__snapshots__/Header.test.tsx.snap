@@ -3,22 +3,15 @@
 exports[`Header with default props match a snapshot 1`] = `
 <div>
   <header
-    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary makeStyles-appBar-2 mui-fixed MuiPaper-elevation4"
     style="margin: 0px;"
   >
     <div
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <div
-        class="MuiBox-root MuiBox-root-1"
-      >
-        <img
-          alt="logo"
-          class=""
-          height="35px"
-          src="/logo-white.png"
-        />
-      </div>
+        class="MuiBox-root MuiBox-root-3"
+      />
       <div
         style="margin-left: auto;"
       >
@@ -73,16 +66,21 @@ exports[`Header with default props match a snapshot 1`] = `
 exports[`Header with title & logo match a snapshot 1`] = `
 <div>
   <header
-    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary makeStyles-appBar-5 mui-fixed MuiPaper-elevation4"
     style="margin: 0px;"
   >
     <div
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <div
-        class="MuiBox-root MuiBox-root-2"
+        class="MuiBox-root MuiBox-root-6"
       >
-        Header
+        <img
+          alt="logo"
+          class=""
+          height="35px"
+          src="/logo-white.png"
+        />
       </div>
       <div
         style="margin-left: auto;"

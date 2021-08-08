@@ -19,7 +19,7 @@ export const Layout: FunctionComponent<LayoutProps> = ({ headerOptions, children
     return (
         <>
             <Container maxWidth={false} className={classes.container}>
-                <Header title={headerOptions.title} logo={headerOptions.logo} />
+                <Header title={headerOptions.title} logoURL={headerOptions.logoURL} />
                 {children}
             </Container>
         </>

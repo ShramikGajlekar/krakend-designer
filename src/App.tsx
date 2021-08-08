@@ -1,24 +1,34 @@
-import { CssBaseline } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import { Box, CssBaseline } from '@material-ui/core';
 import React from 'react';
-import { Layout, LayoutProps } from './components/layout/Layout';
+import { BrowserRouter } from 'react-router-dom';
+import AppRouter from './components/app-router/AppRouter';
+import { HeaderProps } from './components/header/Header';
+import SidebarLayout from './components/layout/SidebarLayout';
+import { SidebarProps } from './components/sidebar/Sidebar';
 
 function App(): JSX.Element {
-    const layoutOptions: LayoutProps = {
-        headerOptions: {
-            logo: '/logo-white.png',
+    const headerOptions: HeaderProps = {
+        logoURL: '/logo-white.png',
+    };
+
+    const sidebarOptions: SidebarProps = {
+        sidebarListOptions: {
+            title: 'Krakdend Designer',
+            endpoints: ['endpoint 1', 'endpoint2', 'endpoint3'],
+            disabled: true,
         },
     };
+
     return (
         <CssBaseline>
-            <Layout headerOptions={layoutOptions.headerOptions}>
-                <Grid container direction="column" alignItems="center" justify="center" style={{ minHeight: '90vh' }}>
-                    <Grid item xl={3}>
-                        <Typography variant="h3">component here</Typography>
-                    </Grid>
-                </Grid>
-            </Layout>
+            <BrowserRouter>
+                <Box m={10} />
+                <SidebarLayout headerOptions={headerOptions} sidebarOptions={sidebarOptions}>
+                    <AppRouter />
+                    {/* <Box mt={4} pl={5} pr={5} style={{ minHeight: '90vh' }}> */}
+                    {/* </Box> */}
+                </SidebarLayout>
+            </BrowserRouter>
         </CssBaseline>
     );
 }

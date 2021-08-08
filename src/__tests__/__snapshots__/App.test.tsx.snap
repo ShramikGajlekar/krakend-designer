@@ -3,17 +3,20 @@
 exports[`<App /> match a snapshot 1`] = `
 <div>
   <div
-    class="MuiContainer-root makeStyles-container-1"
+    class="MuiBox-root MuiBox-root-1"
+  />
+  <div
+    class="makeStyles-root-2"
   >
     <header
-      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary makeStyles-appBar-5 mui-fixed MuiPaper-elevation4"
       style="margin: 0px;"
     >
       <div
         class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
       >
         <div
-          class="MuiBox-root MuiBox-root-2"
+          class="MuiBox-root MuiBox-root-6"
         >
           <img
             alt="logo"
@@ -71,19 +74,581 @@ exports[`<App /> match a snapshot 1`] = `
       </div>
     </header>
     <div
-      class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
-      style="min-height: 90vh;"
+      class="MuiDrawer-root MuiDrawer-docked makeStyles-drawer-7"
     >
       <div
-        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xl-3"
+        class="MuiPaper-root MuiDrawer-paper makeStyles-drawerPaper-8 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft MuiPaper-elevation0"
       >
-        <h3
-          class="MuiTypography-root MuiTypography-h3"
+        <div
+          class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+        />
+        <div
+          class="makeStyles-drawerContainer-9"
         >
-          component here
-        </h3>
+          <nav
+            aria-labelledby="nested-list-subheader"
+            class="MuiList-root makeStyles-root-10 MuiList-padding MuiList-subheader"
+          >
+            <div
+              class="MuiListSubheader-root MuiListSubheader-sticky MuiListSubheader-gutters"
+              id="nested-list-subheader"
+            >
+              Krakdend Designer
+            </div>
+            <div
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="MuiListItemIcon-root"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="MuiListItemText-root"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  Dashboard
+                </span>
+              </div>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+            <div
+              aria-disabled="true"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters Mui-disabled MuiListItem-button Mui-disabled"
+              role="button"
+              tabindex="-1"
+            >
+              <div
+                class="MuiListItemIcon-root"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="MuiListItemText-root"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  Service Configuration
+                </span>
+              </div>
+            </div>
+            <div
+              aria-disabled="true"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters Mui-disabled MuiListItem-button Mui-disabled"
+              role="button"
+              tabindex="-1"
+            >
+              <div
+                class="MuiListItemIcon-root"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="MuiListItemText-root"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  Service Discovery & Hosts
+                </span>
+              </div>
+            </div>
+            <div
+              aria-disabled="true"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters Mui-disabled MuiListItem-button Mui-disabled"
+              role="button"
+              tabindex="-1"
+            >
+              <div
+                class="MuiListItemIcon-root"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="MuiListItemText-root"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  Endpoints
+                </span>
+              </div>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </div>
+            <div
+              aria-disabled="true"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters Mui-disabled MuiListItem-button Mui-disabled"
+              role="button"
+              tabindex="-1"
+            >
+              <div
+                class="MuiListItemIcon-root"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="MuiListItemText-root"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  Security Options
+                </span>
+              </div>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </div>
+            <div
+              aria-disabled="true"
+              class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters Mui-disabled MuiListItem-button Mui-disabled"
+              role="button"
+              tabindex="-1"
+            >
+              <div
+                class="MuiListItemIcon-root"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="MuiListItemText-root"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  Logging & Metrics
+                </span>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
     </div>
+    <main
+      class="makeStyles-content-3"
+    >
+      <div>
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 MuiGrid-align-items-xs-flex-start MuiGrid-justify-xs-center"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-6"
+          >
+            <div
+              class="MuiPaper-root MuiCard-root MuiPaper-outlined MuiPaper-rounded"
+            >
+              <div
+                class="MuiCardContent-root"
+              >
+                <h6
+                  class="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextSecondary"
+                >
+                  Creating your first service?
+                </h6>
+                <hr
+                  class="MuiDivider-root"
+                />
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  Hi, thanks for using the KrakenDesigner. This application creates the configuration that the KrakenD service loads.
+                </p>
+              </div>
+              <div
+                class="MuiCardActions-root MuiCardActions-spacing"
+              >
+                <label
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+                  role="button"
+                  tabindex="0"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    Create Configuration
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-6"
+          >
+            <div
+              class="MuiPaper-root MuiCard-root MuiPaper-outlined MuiPaper-rounded"
+            >
+              <div
+                class="MuiCardContent-root"
+              >
+                <h6
+                  class="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextSecondary"
+                >
+                  Load a previous configuration file
+                </h6>
+                <hr
+                  class="MuiDivider-root"
+                />
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  Drag and drop a previous configuration file below to resume a configuration. After reviewing the values press the button to load it in the application. Only
+                   
+                  <code>
+                     application/json
+                  </code>
+                   file type is accepted by the KrakenDesigner.
+                </p>
+              </div>
+              <div
+                class="MuiCardActions-root MuiCardActions-spacing"
+              >
+                <label
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+                  role="button"
+                  tabindex="0"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    Upload File
+                    <input
+                      hidden=""
+                      type="file"
+                    />
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 MuiGrid-align-items-xs-flex-start"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-3"
+          >
+            <div>
+              <div
+                class="MuiPaper-root MuiCard-root makeStyles-card-12 MuiPaper-outlined MuiPaper-rounded"
+              >
+                <div
+                  class="MuiCardContent-root"
+                >
+                  <h6
+                    class="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextSecondary"
+                  >
+                    Service 1
+                  </h6>
+                  <hr
+                    class="MuiDivider-root"
+                  />
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Service Description here
+                  </p>
+                </div>
+                <div
+                  class="MuiCardActions-root MuiCardActions-spacing"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiButton-label"
+                    >
+                      Download
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                  <button
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiButton-label"
+                    >
+                      Edit
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-3"
+          >
+            <div>
+              <div
+                class="MuiPaper-root MuiCard-root makeStyles-card-12 MuiPaper-outlined MuiPaper-rounded"
+              >
+                <div
+                  class="MuiCardContent-root"
+                >
+                  <h6
+                    class="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextSecondary"
+                  >
+                    Service 1
+                  </h6>
+                  <hr
+                    class="MuiDivider-root"
+                  />
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Service Description here
+                  </p>
+                </div>
+                <div
+                  class="MuiCardActions-root MuiCardActions-spacing"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiButton-label"
+                    >
+                      Download
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                  <button
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiButton-label"
+                    >
+                      Edit
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-3"
+          >
+            <div>
+              <div
+                class="MuiPaper-root MuiCard-root makeStyles-card-12 MuiPaper-outlined MuiPaper-rounded"
+              >
+                <div
+                  class="MuiCardContent-root"
+                >
+                  <h6
+                    class="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextSecondary"
+                  >
+                    Service 1
+                  </h6>
+                  <hr
+                    class="MuiDivider-root"
+                  />
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Service Description here
+                  </p>
+                </div>
+                <div
+                  class="MuiCardActions-root MuiCardActions-spacing"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiButton-label"
+                    >
+                      Download
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                  <button
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiButton-label"
+                    >
+                      Edit
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-3"
+          >
+            <div>
+              <div
+                class="MuiPaper-root MuiCard-root makeStyles-card-12 MuiPaper-outlined MuiPaper-rounded"
+              >
+                <div
+                  class="MuiCardContent-root"
+                >
+                  <h6
+                    class="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextSecondary"
+                  >
+                    Service 1
+                  </h6>
+                  <hr
+                    class="MuiDivider-root"
+                  />
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Service Description here
+                  </p>
+                </div>
+                <div
+                  class="MuiCardActions-root MuiCardActions-spacing"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiButton-label"
+                    >
+                      Download
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                  <button
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiButton-label"
+                    >
+                      Edit
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </div>
 `;
