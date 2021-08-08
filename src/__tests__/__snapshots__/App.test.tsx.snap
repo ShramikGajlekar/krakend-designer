@@ -2,8 +2,88 @@
 
 exports[`<App /> match a snapshot 1`] = `
 <div>
-  <div>
-    Hello, Start coding to see magic 
+  <div
+    class="MuiContainer-root makeStyles-container-1"
+  >
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+      style="margin: 0px;"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <div
+          class="MuiBox-root MuiBox-root-2"
+        >
+          <img
+            alt="logo"
+            class=""
+            height="35px"
+            src="/logo-white.png"
+          />
+        </div>
+        <div
+          style="margin-left: auto;"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit MuiButton-textSizeLarge MuiButton-sizeLarge"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Tab1
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit MuiButton-textSizeLarge MuiButton-sizeLarge"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Tab2
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit MuiButton-textSizeLarge MuiButton-sizeLarge"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Tab3
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </header>
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
+      style="min-height: 90vh;"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xl-3"
+      >
+        <h3
+          class="MuiTypography-root MuiTypography-h3"
+        >
+          component here
+        </h3>
+      </div>
+    </div>
   </div>
 </div>
 `;
