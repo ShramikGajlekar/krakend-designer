@@ -30,6 +30,17 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
+enum SidebarItemsEnum {
+    DASHBOARD = 'Dashboard',
+    SERVICE_CONFIG = 'Service Configuration',
+    SERVICE_DISCOVERY = 'Service Discovery & Hosts',
+    ENDPOINTS = 'Endpoints',
+    SECURITY_OPTIONS = 'Security Options',
+    OAUTH = 'OAuth',
+    SECURITY_HEADERS = 'Security Headers',
+    LOGGING_METRICS = 'Logging & Metrics',
+}
+
 export interface SidebarListProps {
     title: string;
     endpoints: string[];
@@ -56,44 +67,45 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, endpoints, di
 
     return (
         <List
+            key="sidebar"
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
-                <ListSubheader component="div" id="nested-list-subheader">
+                <ListSubheader component="div" key="nested-list-subheader">
                     {title}
                 </ListSubheader>
             }
             className={classes.root}
         >
-            <ListItem button>
+            <ListItem button key={SidebarItemsEnum.DASHBOARD}>
                 <ListItemIcon>
                     <DashboardIcon />
                 </ListItemIcon>
-                <ListItemText primary="Dashboard" />
+                <ListItemText primary={SidebarItemsEnum.DASHBOARD} />
             </ListItem>
-            <ListItem button disabled={disabled}>
+            <ListItem button key={SidebarItemsEnum.SERVICE_CONFIG} disabled={disabled}>
                 <ListItemIcon>
                     <BuildIcon />
                 </ListItemIcon>
-                <ListItemText primary="Service Configuration" />
+                <ListItemText primary={SidebarItemsEnum.SERVICE_CONFIG} />
             </ListItem>
-            <ListItem button disabled={disabled}>
+            <ListItem button key={SidebarItemsEnum.SERVICE_DISCOVERY} disabled={disabled}>
                 <ListItemIcon>
                     <LanguageIcon />
                 </ListItemIcon>
-                <ListItemText primary="Service Discovery & Hosts" />
+                <ListItemText primary={SidebarItemsEnum.SERVICE_DISCOVERY} />
             </ListItem>
-            <ListItem button disabled={disabled} onClick={toggleEndpointsVisiblilty}>
+            <ListItem button key={SidebarItemsEnum.ENDPOINTS} disabled={disabled} onClick={toggleEndpointsVisiblilty}>
                 <ListItemIcon>
                     <SettingsIcon />
                 </ListItemIcon>
-                <ListItemText primary="Endpoints" />
+                <ListItemText primary={SidebarItemsEnum.ENDPOINTS} />
                 {openEndpoints ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={openEndpoints} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
+                <List key="endpoint" component="div" disablePadding>
                     {endpoints.map((endpoint) => (
-                        <ListItem button className={classes.nested}>
+                        <ListItem key={endpoint} button className={classes.nested}>
                             <ListItemIcon>
                                 <AddCircleIcon />
                             </ListItemIcon>
@@ -101,7 +113,7 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, endpoints, di
                         </ListItem>
                     ))}
 
-                    <ListItem button className={classes.nested}>
+                    <ListItem key="add-endpoint" button className={classes.nested}>
                         <ListItemIcon>
                             <AddCircleIcon />
                         </ListItemIcon>
@@ -109,34 +121,39 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, endpoints, di
                     </ListItem>
                 </List>
             </Collapse>
-            <ListItem button disabled={disabled} onClick={toggleSecurityOptionsVisiblilty}>
+            <ListItem
+                button
+                key={SidebarItemsEnum.SECURITY_OPTIONS}
+                disabled={disabled}
+                onClick={toggleSecurityOptionsVisiblilty}
+            >
                 <ListItemIcon>
                     <SecurityIcon />
                 </ListItemIcon>
-                <ListItemText primary="Security Options" />
+                <ListItemText primary={SidebarItemsEnum.SECURITY_OPTIONS} />
                 {openSecurityOptions ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={openSecurityOptions} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                    <ListItem button className={classes.nested}>
+                <List key={SidebarItemsEnum.SECURITY_OPTIONS} component="div" disablePadding>
+                    <ListItem key={SidebarItemsEnum.OAUTH} button className={classes.nested}>
                         <ListItemIcon>
                             <LockOpenIcon />
                         </ListItemIcon>
-                        <ListItemText primary="OAuth" />
+                        <ListItemText primary={SidebarItemsEnum.OAUTH} />
                     </ListItem>
-                    <ListItem button className={classes.nested}>
+                    <ListItem key={SidebarItemsEnum.SECURITY_HEADERS} button className={classes.nested}>
                         <ListItemIcon>
                             <VpnKeyIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Security Headers" />
+                        <ListItemText primary={SidebarItemsEnum.SECURITY_HEADERS} />
                     </ListItem>
                 </List>
             </Collapse>
-            <ListItem button disabled={disabled}>
+            <ListItem key={SidebarItemsEnum.LOGGING_METRICS} button disabled={disabled}>
                 <ListItemIcon>
                     <AssessmentIcon />
                 </ListItemIcon>
-                <ListItemText primary="Logging & Metrics" />
+                <ListItemText primary={SidebarItemsEnum.LOGGING_METRICS} />
             </ListItem>
         </List>
     );

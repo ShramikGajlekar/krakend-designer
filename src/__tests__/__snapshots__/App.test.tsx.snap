@@ -91,7 +91,6 @@ exports[`<App /> match a snapshot 1`] = `
           >
             <div
               class="MuiListSubheader-root MuiListSubheader-sticky MuiListSubheader-gutters"
-              id="nested-list-subheader"
             >
               Krakdend Designer
             </div>
