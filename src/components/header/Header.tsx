@@ -30,7 +30,7 @@ export const Header: FunctionComponent<HeaderProps> = ({ title, logoURL }) => {
                     <Box my={1} pl={0} mx={0}>
                         {logoURL ? <img className="" src={logoURL} height="35px" alt="logo" /> : title}
                     </Box>
-                    <div style={{ marginLeft: 'auto' }}>
+                    {/* <div style={{ marginLeft: 'auto' }}>
                         <Button size="large" color="inherit">
                             Tab1
                         </Button>
@@ -40,7 +40,7 @@ export const Header: FunctionComponent<HeaderProps> = ({ title, logoURL }) => {
                         <Button size="large" color="inherit">
                             Tab3
                         </Button>
-                    </div>
+                    </div> */}
                 </Toolbar>
             </AppBar>
         </>

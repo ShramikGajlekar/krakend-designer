@@ -51,17 +51,17 @@ export interface SidebarListItem {
     title: string;
 }
 
-const SidebarList: FunctionComponent<SidebarListProps> = ({ title, endpoints, disabled }) => {
+const SidebarList: FunctionComponent<SidebarListProps> = ({ title, endpoints, disabled }): JSX.Element => {
     const classes = useStyles();
 
     const [openEndpoints, setOpenEnpoints] = useState(false);
     const [openSecurityOptions, setOpenSecurityOptions] = useState(false);
 
-    const toggleEndpointsVisiblilty = () => {
+    const toggleEndpointsVisiblilty = (): void => {
         setOpenEnpoints(!openEndpoints);
     };
 
-    const toggleSecurityOptionsVisiblilty = () => {
+    const toggleSecurityOptionsVisiblilty = (): void => {
         setOpenSecurityOptions(!openSecurityOptions);
     };
 
@@ -83,7 +83,7 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, endpoints, di
                 </ListItemIcon>
                 <ListItemText primary={SidebarItemsEnum.DASHBOARD} />
             </ListItem>
-            <ListItem button key={SidebarItemsEnum.SERVICE_CONFIG} disabled={disabled}>
+            <ListItem button key={SidebarItemsEnum.SERVICE_CONFIG}>
                 <ListItemIcon>
                     <BuildIcon />
                 </ListItemIcon>

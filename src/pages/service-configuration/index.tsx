@@ -1,0 +1,1 @@
+export { ServiceConfigPage } from './page';
