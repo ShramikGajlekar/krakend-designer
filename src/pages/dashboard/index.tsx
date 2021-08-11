@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import ServiceCard from '../../components/service-card/ServiceCard';
 
-const Dashboard = () => {
+const Dashboard = (): JSX.Element => {
     return (
         <div>
             <Grid container spacing={4} direction="row" alignItems="flex-start" justify="center">

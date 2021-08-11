@@ -3,6 +3,12 @@ export interface HostInfo {
     hostAddress: string;
 }
 
+export interface ModifyHostInfoPayload {
+    disableSanitize: boolean;
+    hostAddress: string;
+    index: number;
+}
+
 export interface AvailableServiceHosts {
     serviceDiscovery: string;
     hosts: HostInfo[];
@@ -11,15 +17,17 @@ export interface AvailableServiceHosts {
 export interface HTTPServerSettings {
     port?: number;
     enableHTTPS?: boolean;
-    httpReadTimeOut?: number;
-    httpWriteTimeOut?: number;
-    httpIdleTimeOut?: number;
-    httpReadHeaderTimeOut?: number;
+    publicKey?: string;
+    privateKey?: string;
+    httpReadTimeOut?: string;
+    httpWriteTimeOut?: string;
+    httpIdleTimeOut?: string;
+    httpReadHeaderTimeOut?: string;
 }
 
 export interface TimeOutsAndTTL {
-    backendTimeOut?: number;
-    defaultCacheTTL?: number;
+    backendTimeOut?: string;
+    defaultCacheTTL?: string;
 }
 
 export interface Options {
@@ -28,36 +36,46 @@ export interface Options {
 }
 
 export interface BotDetector {
-    enable?: boolean;
-    whitelist?: string[];
-    blacklist?: string[];
-    patterns?: string[];
-    cacheSize?: number[];
+    enable: boolean;
+    whitelist: string[];
+    blacklist: string[];
+    patterns: string[];
+    cacheSize: number;
 }
 
 export interface AdvHTTPClientTimeouts {
-    idleConnectionTimeOut?: number;
-    responseHeaderTimeOut?: number;
-    expectContinueTimeOut?: number;
+    idleConnectionTimeOut: string;
+    responseHeaderTimeOut: string;
+    expectContinueTimeOut: string;
 }
 
 export interface AdvHTTPClientConnections {
-    maxIdleConn?: number;
-    maxIdleConnPerHost?: number;
-    disableKeepAlives?: boolean;
-    disableCompression?: boolean;
+    maxIdleConn: number | undefined;
+    maxIdleConnPerHost: number | undefined;
+    disableKeepAlives: boolean;
+    disableCompression: boolean;
 }
 
 export interface AdvHTTPClientDial {
-    dialerTimeOut?: number;
-    dialerFallbackDelay?: number;
-    dialerKeepAlive?: number;
+    dialerTimeOut: string;
+    dialerFallbackDelay: string;
+    dialerKeepAlive: string;
 }
 
 export interface HTTPClientSettings {
-    timeouts?: AdvHTTPClientTimeouts;
-    connections?: AdvHTTPClientConnections;
-    dialSettings?: AdvHTTPClientDial;
+    timeouts: AdvHTTPClientTimeouts;
+    connections: AdvHTTPClientConnections;
+    dialSettings: AdvHTTPClientDial;
+}
+
+export interface Cors {
+    enableCors: boolean;
+    allowedMethods: string[];
+    allowedOrigins: string[];
+    allowedHeaders: string[];
+    exposeHeaders: string[];
+    allowCredentials: boolean;
+    maxAge: string;
 }
 
 export interface ServiceConfig {
@@ -66,6 +84,7 @@ export interface ServiceConfig {
     httpServerSettings?: HTTPServerSettings;
     timeoutsAndTTL?: TimeOutsAndTTL;
     options: Options;
-    botDetector?: BotDetector;
-    httpClientSettings?: HTTPClientSettings;
+    botDetector: BotDetector;
+    httpClientSettings: HTTPClientSettings;
+    cors: Cors;
 }

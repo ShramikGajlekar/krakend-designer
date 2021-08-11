@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ServiceCard = () => {
+const ServiceCard = (): JSX.Element => {
     const classes = useStyles();
 
     return (

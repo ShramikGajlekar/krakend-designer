@@ -1,4 +1,5 @@
 import Dashboard from './dashboard';
+import { ServiceConfigPage } from './service-configuration';
 
 const routes = [
     {
@@ -6,6 +7,12 @@ const routes = [
         path: ['/', '/dashboard'],
         exact: true,
         component: Dashboard,
+    },
+    {
+        id: 1,
+        path: ['/service-configuration'],
+        exact: true,
+        component: ServiceConfigPage,
     },
 ];
 
