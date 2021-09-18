@@ -47,7 +47,7 @@ enum SidebarItemsEnum {
 }
 
 export interface SidebarListProps {
-    title: string;
+    title?: string;
     disabled?: boolean;
 }
 
@@ -140,16 +140,18 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): 
         dispatch(addEndpoints(endpoint));
     };
 
+    const subheader = (
+        <ListSubheader component="div" key="nested-list-subheader">
+            {title}
+        </ListSubheader>
+    );
+
     return (
         <List
             key="sidebar"
             component="nav"
             aria-labelledby="nested-list-subheader"
-            subheader={
-                <ListSubheader component="div" key="nested-list-subheader">
-                    {title}
-                </ListSubheader>
-            }
+            subheader={subheader}
             className={classes.root}
         >
             <ListItem button key={SidebarItemsEnum.DASHBOARD}>
