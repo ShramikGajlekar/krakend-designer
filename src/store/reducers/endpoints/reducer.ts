@@ -4,21 +4,12 @@ import {
     EndpointInfo,
     EditEndpoint,
     ChangeEndpointMethod,
-    AddQueryString,
-    RemoveQueryString,
-    AddHeader,
-    RemoveHeader,
-    AddScopes,
-    RemoveScopes,
-    AddAudience,
-    RemoveAudience,
-    AddRole,
-    RemoveRole,
-    AddFingerprint,
-    RemoveFingerprint,
     ModifyCipherSuites,
-    ModifyJWT,
+    ModifyJWTValidation,
     ModifyMatcher,
+    ModifyJWTSigning,
+    EndpointSettingsArrayStringAdder,
+    EndpointSettingsArrayRemover,
 } from './interfaces';
 
 const initialState: EndpointInfo[] = [];
@@ -30,57 +21,79 @@ const endpointsSlice = createSlice({
         addEndpoints(state, action: PayloadAction<EndpointInfo>) {
             state.push(action.payload);
         },
-        modifyMethod(state, action: PayloadAction<ChangeEndpointMethod>) {
-            state[action.payload.index].method = action.payload.method;
+        modifyMethod(state, action: PayloadAction<EndpointSettingsArrayStringAdder>) {
+            state[action.payload.endpointIndex].method = action.payload.param;
+        },
+        modifyOutput(state, action: PayloadAction<EndpointSettingsArrayStringAdder>) {
+            state[action.payload.endpointIndex].output = action.payload.param;
         },
         modifyEndpoint(state, action: PayloadAction<EditEndpoint>) {
             state[action.payload.index] = action.payload.endpoint;
         },
-        addQueryString(state, action: PayloadAction<AddQueryString>) {
-            state[action.payload.index].recognizedQueryString?.push(action.payload.param);
+        addQueryString(state, action: PayloadAction<EndpointSettingsArrayStringAdder>) {
+            state[action.payload.endpointIndex].recognizedQueryString?.push(action.payload.param);
         },
-        removeQueryString(state, action: PayloadAction<RemoveQueryString>) {
-            state[action.payload.endpointIndex].recognizedQueryString?.splice(action.payload.queryIndex, 1);
+        removeQueryString(state, action: PayloadAction<EndpointSettingsArrayRemover>) {
+            state[action.payload.endpointIndex].recognizedQueryString?.splice(action.payload.paramIndex, 1);
         },
-        addHeader(state, action: PayloadAction<AddHeader>) {
-            state[action.payload.index].headers?.push(action.payload.param);
+        addHeader(state, action: PayloadAction<EndpointSettingsArrayStringAdder>) {
+            state[action.payload.endpointIndex].headers?.push(action.payload.param);
         },
-        removeHeader(state, action: PayloadAction<RemoveHeader>) {
-            state[action.payload.endpointIndex].headers?.splice(action.payload.queryIndex, 1);
+        removeHeader(state, action: PayloadAction<EndpointSettingsArrayRemover>) {
+            state[action.payload.endpointIndex].headers?.splice(action.payload.paramIndex, 1);
         },
-        addScopes(state, action: PayloadAction<AddScopes>) {
-            state[action.payload.index].jwtValidation.scopesToValidate?.push(action.payload.scope);
+        addScopes(state, action: PayloadAction<EndpointSettingsArrayStringAdder>) {
+            state[action.payload.endpointIndex].jwtValidation.scopesToValidate?.push(action.payload.param);
         },
-        removeScopes(state, action: PayloadAction<RemoveScopes>) {
-            state[action.payload.endpointIndex].jwtValidation.scopesToValidate?.splice(action.payload.scopeIndex, 1);
+        removeScopes(state, action: PayloadAction<EndpointSettingsArrayRemover>) {
+            state[action.payload.endpointIndex].jwtValidation.scopesToValidate?.splice(action.payload.paramIndex, 1);
         },
-        addAudience(state, action: PayloadAction<AddAudience>) {
-            state[action.payload.index].jwtValidation.audience?.push(action.payload.audience);
+        addAudience(state, action: PayloadAction<EndpointSettingsArrayStringAdder>) {
+            state[action.payload.endpointIndex].jwtValidation.audience?.push(action.payload.param);
         },
-        removeAudience(state, action: PayloadAction<RemoveAudience>) {
-            state[action.payload.endpointIndex].jwtValidation.audience?.splice(action.payload.audIndex, 1);
+        removeAudience(state, action: PayloadAction<EndpointSettingsArrayRemover>) {
+            state[action.payload.endpointIndex].jwtValidation.audience?.splice(action.payload.paramIndex, 1);
         },
-        addRole(state, action: PayloadAction<AddRole>) {
-            state[action.payload.index].jwtValidation.roles?.push(action.payload.role);
+        addRole(state, action: PayloadAction<EndpointSettingsArrayStringAdder>) {
+            state[action.payload.endpointIndex].jwtValidation.roles?.push(action.payload.param);
         },
-        removeRole(state, action: PayloadAction<RemoveRole>) {
-            state[action.payload.endpointIndex].jwtValidation.roles?.splice(action.payload.roleIndex, 1);
+        removeRole(state, action: PayloadAction<EndpointSettingsArrayRemover>) {
+            state[action.payload.endpointIndex].jwtValidation.roles?.splice(action.payload.paramIndex, 1);
         },
-        addFingerprint(state, action: PayloadAction<AddFingerprint>) {
-            state[action.payload.index].jwtValidation.fingerPrints?.push(action.payload.fingerprint);
+        addFingerprint(state, action: PayloadAction<EndpointSettingsArrayStringAdder>) {
+            state[action.payload.endpointIndex].jwtValidation.fingerPrints?.push(action.payload.param);
         },
-        removeFingerprint(state, action: PayloadAction<RemoveFingerprint>) {
-            state[action.payload.endpointIndex].jwtValidation.fingerPrints?.splice(action.payload.fingerprintIndex, 1);
+        removeFingerprint(state, action: PayloadAction<EndpointSettingsArrayRemover>) {
+            state[action.payload.endpointIndex].jwtValidation.fingerPrints?.splice(action.payload.paramIndex, 1);
         },
         modifyCustomCiphers(state, action: PayloadAction<ModifyCipherSuites>) {
             state[action.payload.endpointIndex].jwtValidation.customCipherSuites.customCiphers =
                 action.payload.customCiphers;
         },
-        modifyJWTValidation(state, action: PayloadAction<ModifyJWT>) {
+        modifyJWTValidation(state, action: PayloadAction<ModifyJWTValidation>) {
             state[action.payload.endpointIndex].jwtValidation = action.payload.jwtValidation;
         },
         modifyMatcher(state, action: PayloadAction<ModifyMatcher>) {
             state[action.payload.endpointIndex].jwtValidation.matcher = action.payload.matcher;
+        },
+        modifyJWTSigning(state, action: PayloadAction<ModifyJWTSigning>) {
+            state[action.payload.endpointIndex].jwtSigning = action.payload.jwtSigning;
+        },
+        addFingerprintJWTSigning(state, action: PayloadAction<EndpointSettingsArrayStringAdder>) {
+            state[action.payload.endpointIndex].jwtSigning.fingerPrints?.push(action.payload.param);
+        },
+        removeFingerprintJWTSigning(state, action: PayloadAction<EndpointSettingsArrayRemover>) {
+            state[action.payload.endpointIndex].jwtSigning.fingerPrints?.splice(action.payload.paramIndex, 1);
+        },
+        addSigningKey(state, action: PayloadAction<EndpointSettingsArrayStringAdder>) {
+            state[action.payload.endpointIndex].jwtSigning.keysToSign?.push(action.payload.param);
+        },
+        removeSigningKey(state, action: PayloadAction<EndpointSettingsArrayRemover>) {
+            state[action.payload.endpointIndex].jwtSigning.keysToSign?.splice(action.payload.paramIndex, 1);
+        },
+        modifyCustomCiphersJWTSigning(state, action: PayloadAction<ModifyCipherSuites>) {
+            state[action.payload.endpointIndex].jwtSigning.customCipherSuites.customCiphers =
+                action.payload.customCiphers;
         },
     },
 });
@@ -103,5 +116,12 @@ export const {
     modifyMatcher,
     addHeader,
     removeHeader,
+    modifyJWTSigning,
+    addFingerprintJWTSigning,
+    removeFingerprintJWTSigning,
+    modifyCustomCiphersJWTSigning,
+    addSigningKey,
+    removeSigningKey,
+    modifyOutput,
 } = endpointsSlice.actions;
 export default endpointsSlice.reducer;

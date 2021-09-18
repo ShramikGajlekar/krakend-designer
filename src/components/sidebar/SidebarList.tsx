@@ -53,6 +53,7 @@ export interface SidebarListProps {
 
 export interface sidebarEndpointItems {
     endpoint: string;
+    method: string;
     index: number;
 }
 
@@ -74,6 +75,7 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): 
             eps.map((e, index) => {
                 endpointOptions.push({
                     endpoint: e.endpoint,
+                    method: e.method,
                     index: index,
                 });
             });
@@ -95,8 +97,8 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): 
     const handleAddEndpoint = () => {
         let endpoint: EndpointInfo = {
             endpoint: '/new-endpoint',
-            method: allowedMethods[0][0],
-            output: encodingOptions[0][0],
+            method: allowedMethods[0][1],
+            output: encodingOptions[0][1],
             recognizedQueryString: [''],
             rateLimiting: {
                 enabled: false,
@@ -125,10 +127,24 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): 
                 fingerPrints: [''],
                 customCipherSuites: {
                     enabled: false,
-                    customCiphers: [''],
+                    customCiphers: [],
                 },
                 enableCaching: false,
                 disableJWKSecurity: false,
+            },
+            jwtSigning: {
+                enable: false,
+                algorithm: '',
+                jwkURI: '',
+                keysToSign: [''],
+                keyID: '',
+                customCipherSuites: {
+                    enabled: false,
+                    customCiphers: [],
+                },
+                fingerPrints: [''],
+                disableJWKSecurity: false,
+                fullSerialization: false,
             },
             enableSequentialProxy: false,
             backendEndpoint: [],
@@ -187,7 +203,9 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): 
                             <ListItemIcon>
                                 <AddCircleIcon />
                             </ListItemIcon>
-                            <Link to={'/endpoints/' + endpoint.index}>{endpoint.endpoint}</Link>
+                            <Link to={'/endpoints/' + endpoint.index}>
+                                ({endpoint.method}) {endpoint.endpoint}
+                            </Link>
                         </ListItem>
                     ))}
                     <ListItem key="add-endpoint" button className={classes.nested} onClick={handleAddEndpoint}>

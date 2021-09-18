@@ -34,6 +34,7 @@ import {
 } from '../../../store/reducers/service-config/reducer';
 import { BotDetector } from '../../../store/reducers/service-config/interfaces';
 import TextInputArray from '../../../components/ui-molecules/text-input-array';
+import { WhiteCheckbox } from '../../../components/ui-molecules/checkbox-flavors';
 
 const useStyles = makeStyles((theme) => ({
     labelServiceName: {
@@ -46,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardTitle: {
         backgroundColor: '#5E6CA1',
+        color: 'white',
     },
     removeButton: {
         marginTop: '25%',
@@ -295,7 +297,7 @@ export const BotDetectorCard = (): JSX.Element => {
                             <FormGroup row>
                                 <FormControlLabel
                                     control={
-                                        <Checkbox
+                                        <WhiteCheckbox
                                             checked={botDetector?.enable}
                                             name="service-config-enable-https"
                                             onChange={(event) =>

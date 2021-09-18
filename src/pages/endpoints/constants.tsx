@@ -48,6 +48,17 @@ export const changeTypeJWTValidationCustomCipherSuites = 'changeTypeJWTValidatio
 export const changeTypeJWTValidationEnableCaching = 'changeTypeJWTValidationEnableCaching';
 export const changeTypeJWTValidationDisableJWKSecurity = 'changeTypeJWTValidationDisableJWKSecurity';
 
+export const changeTypeJWTSigningEnable = 'changeTypeJWTSigningEnable';
+export const changeTypeJWTSigningJWKURI = 'changeTypeJWTSigningJWKURI';
+export const changeTypeJWTSigningAlgorithm = 'changeTypeJWTSigningAlgorithm';
+export const changeTypeJWTSigningKeysToSign = 'changeTypeJWTSigningKeysToSign';
+export const changeTypeJWTSigningKeyID = 'changeTypeJWTSigningKeyID';
+export const changeTypeJWTSigningEnableCustomCipherSuite = 'changeTypeJWTSigningEnableCustomCipherSuite';
+export const changeTypeJWTSigningCustomCipherSuite = 'changeTypeJWTSigningCustomCipherSuite';
+export const changeTypeJWTSigningFingerprints = 'changeTypeJWTSigningFingerprints';
+export const changeTypeJWTSigningFullSerialization = 'changeTypeJWTSigningFullSerialization';
+export const changeTypeJWTSigningDisableJWKSecurity = 'changeTypeJWTSigningDisableJWKSecurity';
+
 export const matcher: string[][] = [
     ['All', 'All'],
     ['Any', 'Any'],
