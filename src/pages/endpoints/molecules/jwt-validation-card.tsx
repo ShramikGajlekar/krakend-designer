@@ -55,6 +55,7 @@ import {
     matcher,
 } from '../constants';
 import TextInputArray from '../../../components/ui-molecules/text-input-array';
+import { WhiteCheckbox } from '../../../components/ui-molecules/checkbox-flavors';
 
 interface IJWTValidationCardProps {
     endpointIndex: number;
@@ -71,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardTitle: {
         backgroundColor: '#5E6CA1',
+        color: 'white',
     },
     removeButton: {
         marginTop: '25%',
@@ -252,6 +254,7 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                 placeholder="RS266"
                                 label="Algorithm"
                             />
+                            <p>Digital signatures and MACs algorithm</p>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={6}>
                             <TextField
@@ -266,6 +269,10 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                 placeholder="https://issuer.com/.well-known/jwks.json"
                                 label="JWKS URI"
                             />
+                            <p>
+                                The URL to your JWK endpoint with the set of public keys used to verify the authenticity
+                                of JWT
+                            </p>
                         </Grid>
                     </Grid>
                     <Grid container spacing={2}>
@@ -291,6 +298,7 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                 }}
                                 viewAddMoreButton={true}
                             />
+                            <p>List of all (or any) scopes that the user should have to access this endpoint.</p>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={1}>
                             {''}
@@ -329,6 +337,10 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                 placeholder="scope"
                                 label="Scopes Key"
                             />
+                            <p>
+                                The key name where the scopes can be found. The key can be a nested object using the .
+                                dot notation, e.g.: data.data2.scopes
+                            </p>
                         </Grid>
                     </Grid>
                     <Grid container spacing={2}>
@@ -346,6 +358,7 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                 placeholder="scope"
                                 label="Issuer"
                             />
+                            <p>Expected issuer of the claim</p>
                         </Grid>
                     </Grid>
                     <Grid container spacing={2}>
@@ -371,6 +384,7 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                 }}
                                 viewAddMoreButton={true}
                             />
+                            <p>List of all the audiences supported by this endpoint</p>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={6}>
                             <TextInputArray
@@ -393,6 +407,7 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                 }}
                                 viewAddMoreButton={true}
                             />
+                            <p>List of all the roles allowed to access this endpoint</p>
                         </Grid>
                     </Grid>
                     <Grid container spacing={2}>
@@ -409,6 +424,7 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                 placeholder="roles"
                                 label="Roles"
                             />
+                            <p>Keyname where the roles are stored</p>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={6}>
                             <TextField
@@ -423,6 +439,7 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                 placeholder="cookie-name"
                                 label="Cookie Name"
                             />
+                            <p>The key name of the cookie</p>
                         </Grid>
                     </Grid>
                     <Grid container spacing={2}>
@@ -433,7 +450,7 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                 arr={jwtValidation.fingerPrints}
                                 label={'Fingerprints'}
                                 name="jwt-validation-fingerprints"
-                                placeholder="fingerprints"
+                                placeholder="e.g: S3Jha2VuRCBpcyB0aGUgYmVzdCBnYXRld2F5LCBhbmQgeW91IGtub3cgaXQ=="
                                 handleChangeArrayState={handleChangeJWTValidation}
                                 handleRemoveElementInArray={handleRemoveFingerprint}
                                 handleAddMoreElementInArray={handleAddMoreFingerprints}
@@ -448,6 +465,9 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                 }}
                                 viewAddMoreButton={true}
                             />
+                            <p>
+                                All fingerprints <strong>must be in base64</strong>
+                            </p>
                         </Grid>
                     </Grid>
                     <Grid container spacing={2}>
@@ -511,6 +531,10 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                         ) : (
                             <></>
                         )}
+                        <p>
+                            Overrides the default cipher suites. Unless you have your own legacy JWK you don't need to
+                            choose anything here
+                        </p>
                     </Grid>
                     <Grid container spacing={2}>
                         <Grid item className={classes.gridItem} sm={6}>
@@ -532,6 +556,10 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                     label="Enable Caching"
                                 />
                             </FormGroup>
+                            <p>
+                                If this value is set to true validated tokens will be stored in-memory for repeated
+                                validations
+                            </p>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={6}>
                             <FormGroup row>
@@ -552,6 +580,7 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                                     label="Disable JWK security"
                                 />
                             </FormGroup>
+                            <p>When you are using an insecure connection (plain http)</p>
                         </Grid>
                     </Grid>
                 </CardContent>
@@ -569,7 +598,7 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
                             <FormGroup row>
                                 <FormControlLabel
                                     control={
-                                        <Checkbox
+                                        <WhiteCheckbox
                                             checked={jwtValidation.enable}
                                             name="endpoint-jwt-validation-enable"
                                             onChange={(event) =>

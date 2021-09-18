@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardTitle: {
         backgroundColor: '#5E6CA1',
+        color: 'white',
     },
     formControl: {
         margin: theme.spacing(1),

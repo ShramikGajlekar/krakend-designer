@@ -23,6 +23,7 @@ import {
 } from '../../../store/reducers/service-discovery/reducer';
 import { ETCDMiddleware } from '../../../store/reducers/service-discovery/interfaces';
 import TextInputArray from '../../../components/ui-molecules/text-input-array';
+import { WhiteCheckbox } from '../../../components/ui-molecules/checkbox-flavors';
 
 const useStyles = makeStyles((theme) => ({
     labelServiceName: {
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardTitle: {
         backgroundColor: '#5E6CA1',
+        color: 'white',
     },
     removeButton: {
         marginTop: '25%',
@@ -358,7 +360,7 @@ export const ETCDMiddlewareCard = (): JSX.Element => {
                             <FormGroup row>
                                 <FormControlLabel
                                     control={
-                                        <Checkbox
+                                        <WhiteCheckbox
                                             checked={etcdMiddleware.enable}
                                             name="service-discovery-enable-etcd-middleware"
                                             onChange={(event) =>

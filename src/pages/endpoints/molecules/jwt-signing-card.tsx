@@ -41,6 +41,7 @@ import {
     allowedCustomCiphers,
 } from '../constants';
 import TextInputArray from '../../../components/ui-molecules/text-input-array';
+import { WhiteCheckbox } from '../../../components/ui-molecules/checkbox-flavors';
 
 interface IJWTSigningCardProps {
     endpointIndex: number;
@@ -57,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardTitle: {
         backgroundColor: '#5E6CA1',
+        color: 'white',
     },
     removeButton: {
         marginTop: '25%',
@@ -194,6 +196,7 @@ export const JWTSigningCard: React.FunctionComponent<IJWTSigningCardProps> = ({ 
                                 placeholder="RS266"
                                 label="Algorithm"
                             />
+                            <p>Digital signatures and MACs algorithm</p>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={6}>
                             <TextField
@@ -208,6 +211,7 @@ export const JWTSigningCard: React.FunctionComponent<IJWTSigningCardProps> = ({ 
                                 placeholder="https://issuer.com/.well-known/jwks.json"
                                 label="JWKS URI"
                             />
+                            <p>The URL to your JWK endpoint with the set of private keys used to sign the token</p>
                         </Grid>
                     </Grid>
                     <Grid container spacing={4}>
@@ -233,6 +237,7 @@ export const JWTSigningCard: React.FunctionComponent<IJWTSigningCardProps> = ({ 
                                 }}
                                 viewAddMoreButton={true}
                             />
+                            <p>List of specific keys needing signing</p>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={6}>
                             <TextField
@@ -257,7 +262,7 @@ export const JWTSigningCard: React.FunctionComponent<IJWTSigningCardProps> = ({ 
                                 arr={jwtSigning.fingerPrints}
                                 label={'Fingerprints'}
                                 name="jwt-signing-fingerprints"
-                                placeholder="fingerprints"
+                                placeholder="e.g: S3Jha2VuRCBpcyB0aGUgYmVzdCBnYXRld2F5LCBhbmQgeW91IGtub3cgaXQ=="
                                 handleChangeArrayState={handleChangeJWTSigning}
                                 handleRemoveElementInArray={handleRemoveFingerprint}
                                 handleAddMoreElementInArray={handleAddMoreFingerprints}
@@ -272,6 +277,9 @@ export const JWTSigningCard: React.FunctionComponent<IJWTSigningCardProps> = ({ 
                                 }}
                                 viewAddMoreButton={true}
                             />
+                            <p>
+                                All fingerprints <strong>must be in base64</strong>
+                            </p>
                         </Grid>
                     </Grid>
                     <Grid container spacing={1}>
@@ -335,6 +343,10 @@ export const JWTSigningCard: React.FunctionComponent<IJWTSigningCardProps> = ({ 
                         ) : (
                             <></>
                         )}
+                        <p>
+                            Overrides the default cipher suites. Unless you have your own legacy JWK you don't need to
+                            choose anything here
+                        </p>
                     </Grid>
                     <Grid container spacing={4}>
                         <Grid item className={classes.gridItem} sm={6}>
@@ -352,6 +364,7 @@ export const JWTSigningCard: React.FunctionComponent<IJWTSigningCardProps> = ({ 
                                     label="Enable Caching"
                                 />
                             </FormGroup>
+                            <p>Use JSON format instead of the compact form JWT is giving</p>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={6}>
                             <FormGroup row>
@@ -368,6 +381,7 @@ export const JWTSigningCard: React.FunctionComponent<IJWTSigningCardProps> = ({ 
                                     label="Disable JWK security"
                                 />
                             </FormGroup>
+                            <p>When you are using an insecure connection (plain http)</p>
                         </Grid>
                     </Grid>
                 </CardContent>
@@ -385,7 +399,7 @@ export const JWTSigningCard: React.FunctionComponent<IJWTSigningCardProps> = ({ 
                             <FormGroup row>
                                 <FormControlLabel
                                     control={
-                                        <Checkbox
+                                        <WhiteCheckbox
                                             checked={jwtSigning.enable}
                                             name="endpoint-jwt-signing-enable"
                                             onChange={(event) =>

@@ -62,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardTitle: {
         backgroundColor: '#5E6CA1',
+        color: 'white',
     },
     removeButton: {
         marginTop: '25%',
@@ -425,6 +426,10 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
                                 placeholder="/endpoint"
                                 label="Krakend Endpoint"
                             />
+                            <span>
+                                This is the URI your clients will connect to. Must start with slash. Use curly braces to
+                                insert <code>{'{ parameters }'}</code> that can be passed to the backends.
+                            </span>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={3}>
                             <FormControl className={classes.formControl}>
@@ -442,6 +447,7 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
                                         </MenuItem>
                                     ))}
                                 </Select>
+                                <p>HTTP verb</p>
                             </FormControl>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={3}>
@@ -460,6 +466,7 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
                                         </MenuItem>
                                     ))}
                                 </Select>
+                                <p>Encoding used</p>
                             </FormControl>
                         </Grid>
                     </Grid>
@@ -486,6 +493,10 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
                                 }}
                                 viewAddMoreButton={true}
                             />
+                            <p>
+                                Query string parameters to be passed to the backends when present. Write only the name
+                                of the parameter, no question mark or equal symbols.
+                            </p>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={3}>
                             <Grid container direction={'row'} spacing={4}>
