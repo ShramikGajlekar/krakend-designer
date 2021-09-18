@@ -17,6 +17,11 @@ import SecurityIcon from '@material-ui/icons/Security';
 import SettingsIcon from '@material-ui/icons/Settings';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import React, { FunctionComponent, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { allowedMethods, encodingOptions } from '../../pages/service-configuration/constants';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { EndpointInfo } from '../../store/reducers/endpoints/interfaces';
+import { addEndpoints } from '../../store/reducers/endpoints/reducer';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -43,26 +48,96 @@ enum SidebarItemsEnum {
 
 export interface SidebarListProps {
     title: string;
-    endpoints: string[];
     disabled?: boolean;
+}
+
+export interface sidebarEndpointItems {
+    endpoint: string;
+    index: number;
 }
 
 export interface SidebarListItem {
     title: string;
 }
 
-const SidebarList: FunctionComponent<SidebarListProps> = ({ title, endpoints, disabled }): JSX.Element => {
+const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): JSX.Element => {
     const classes = useStyles();
 
     const [openEndpoints, setOpenEnpoints] = useState(false);
     const [openSecurityOptions, setOpenSecurityOptions] = useState(false);
 
+    let eps = useAppSelector((state) => state.endpoints);
+
+    const prepareEnpointProp = (): sidebarEndpointItems[] => {
+        let endpointOptions: sidebarEndpointItems[] = [];
+        if (eps != undefined && eps.length > 0) {
+            eps.map((e, index) => {
+                endpointOptions.push({
+                    endpoint: e.endpoint,
+                    index: index,
+                });
+            });
+        }
+        return endpointOptions;
+    };
+
+    let endpoints = prepareEnpointProp();
+
+    let dispatch = useAppDispatch();
     const toggleEndpointsVisiblilty = (): void => {
         setOpenEnpoints(!openEndpoints);
     };
 
     const toggleSecurityOptionsVisiblilty = (): void => {
         setOpenSecurityOptions(!openSecurityOptions);
+    };
+
+    const handleAddEndpoint = () => {
+        let endpoint: EndpointInfo = {
+            endpoint: '/new-endpoint',
+            method: allowedMethods[0][0],
+            output: encodingOptions[0][0],
+            recognizedQueryString: [''],
+            rateLimiting: {
+                enabled: false,
+                rateLimit: 0,
+                defaultUserQuota: 0,
+            },
+            customCombiner: '',
+            concurrentCalls: 0,
+            headers: [''],
+            timeoutAndCacheTTL: {
+                timeout: '0s',
+                cacheTTL: '0s',
+            },
+            jwtValidation: {
+                enable: false,
+                algorithm: '',
+                jwkURI: '',
+                scopesToValidate: [''],
+                matcher: 'None',
+                scopesKey: '',
+                issuer: '',
+                audience: [''],
+                roles: [''],
+                rolesKey: '',
+                cookieName: '',
+                fingerPrints: [''],
+                customCipherSuites: {
+                    enabled: false,
+                    customCiphers: [''],
+                },
+                enableCaching: false,
+                disableJWKSecurity: false,
+            },
+            enableSequentialProxy: false,
+            backendEndpoint: [],
+            stubResponse: {
+                response: '',
+                strategy: '',
+            },
+        };
+        dispatch(addEndpoints(endpoint));
     };
 
     return (
@@ -95,7 +170,8 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, endpoints, di
                 </ListItemIcon>
                 <ListItemText primary={SidebarItemsEnum.SERVICE_DISCOVERY} />
             </ListItem>
-            <ListItem button key={SidebarItemsEnum.ENDPOINTS} disabled={disabled} onClick={toggleEndpointsVisiblilty}>
+
+            <ListItem button key={SidebarItemsEnum.ENDPOINTS} onClick={toggleEndpointsVisiblilty}>
                 <ListItemIcon>
                     <SettingsIcon />
                 </ListItemIcon>
@@ -105,15 +181,14 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, endpoints, di
             <Collapse in={openEndpoints} timeout="auto" unmountOnExit>
                 <List key="endpoint" component="div" disablePadding>
                     {endpoints.map((endpoint) => (
-                        <ListItem key={endpoint} button className={classes.nested}>
+                        <ListItem key={endpoint.index + endpoint.endpoint} button className={classes.nested}>
                             <ListItemIcon>
                                 <AddCircleIcon />
                             </ListItemIcon>
-                            <ListItemText primary={endpoint} />
+                            <Link to={'/endpoints/' + endpoint.index}>{endpoint.endpoint}</Link>
                         </ListItem>
                     ))}
-
-                    <ListItem key="add-endpoint" button className={classes.nested}>
+                    <ListItem key="add-endpoint" button className={classes.nested} onClick={handleAddEndpoint}>
                         <ListItemIcon>
                             <AddCircleIcon />
                         </ListItemIcon>
@@ -121,6 +196,7 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, endpoints, di
                     </ListItem>
                 </List>
             </Collapse>
+
             <ListItem
                 button
                 key={SidebarItemsEnum.SECURITY_OPTIONS}

@@ -1,4 +1,4 @@
-import { Divider } from '@material-ui/core';
+import { Divider, makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,9 +8,16 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import ServiceCard from '../../components/service-card/ServiceCard';
 
+const useStyles = makeStyles((theme) => ({
+    dashboard: {
+        marginTop: '5%',
+    },
+}));
+
 const Dashboard = (): JSX.Element => {
+    let classes = useStyles();
     return (
-        <div>
+        <div className={classes.dashboard}>
             <Grid container spacing={4} direction="row" alignItems="flex-start" justify="center">
                 <Grid item sm={6}>
                     <Card variant="outlined">

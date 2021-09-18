@@ -39,11 +39,7 @@ const Sidebar: FunctionComponent<SidebarProps> = ({ sidebarListOptions }): JSX.E
         >
             <Toolbar />
             <div className={classes.drawerContainer}>
-                <SidebarList
-                    title={sidebarListOptions.title}
-                    endpoints={sidebarListOptions.endpoints}
-                    disabled={sidebarListOptions.disabled}
-                />
+                <SidebarList title={sidebarListOptions.title} disabled={sidebarListOptions.disabled} />
             </div>
         </Drawer>
     );

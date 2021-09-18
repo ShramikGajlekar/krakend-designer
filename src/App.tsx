@@ -6,6 +6,8 @@ import AppRouter from './components/app-router/AppRouter';
 import { HeaderProps } from './components/header/Header';
 import SidebarLayout from './components/layout/SidebarLayout';
 import { SidebarProps } from './components/sidebar/Sidebar';
+import { sidebarEndpointItems } from './components/sidebar/SidebarList';
+import { useAppSelector } from './store/hooks';
 import { store } from './store/store';
 
 function App(): JSX.Element {
@@ -16,7 +18,6 @@ function App(): JSX.Element {
     const sidebarOptions: SidebarProps = {
         sidebarListOptions: {
             title: 'Krakdend Designer',
-            endpoints: ['endpoint 1', 'endpoint2', 'endpoint3'],
             disabled: true,
         },
     };

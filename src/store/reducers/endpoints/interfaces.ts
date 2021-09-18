@@ -1,3 +1,5 @@
+import { BooleanLiteral } from 'typescript';
+
 export interface RateLimiting {
     enabled: boolean;
     rateLimit: number;
@@ -9,15 +11,16 @@ export interface TimeOutAndCacheTTL {
     cacheTTL: string;
 }
 
-export interface CustomeCiphers {
+export interface CustomCiphers {
     enabled: boolean;
     customCiphers: string[];
 }
 
 export interface JWTValidation {
+    enable: boolean;
     algorithm: string;
     jwkURI: string;
-    scopesToValidate: string;
+    scopesToValidate: string[];
     matcher: string;
     scopesKey: string;
     issuer: string;
@@ -25,8 +28,10 @@ export interface JWTValidation {
     roles: string[];
     rolesKey: string;
     cookieName: string;
-    fingerPrints: string;
-    customCipherSuites: CustomeCiphers;
+    fingerPrints: string[];
+    customCipherSuites: CustomCiphers;
+    enableCaching: boolean;
+    disableJWKSecurity: boolean;
 }
 
 export interface BackendRateLimiting {
@@ -108,8 +113,30 @@ export interface EndpointBackendAuthorization {
     additionalEndpointParameters: AuthAdditionEndpointParam[];
 }
 
+export interface securityHeaders {
+    enableHTTPSecureMiddleware: boolean;
+    allowedHosts: string[];
+    forceSSL: boolean;
+    sslHostDomain: string;
+    sslHostPort: number;
+    sslCertificate: string;
+    sslPrivateKey: string;
+    sslProxy: SSLProxy[];
+    maxAge: number;
+    includeSubDomains: boolean;
+    enableClickJacking: boolean;
+    publicKeyPins: boolean;
+    mimeSniffPrevention: boolean;
+    enableXSSFilter: boolean;
+    contentSecurityPolicy: string;
+}
+
+export interface SSLProxy {
+    proxyHeader: string;
+    proxyValue: string;
+}
+
 export interface BackendApiCalls {
-    enableSequentialProxy?: boolean;
     hostResolution: string;
     hosts: string[];
     disableHostSanitization: boolean;
@@ -141,20 +168,100 @@ export interface EndpointInfo {
     endpoint: string;
     method: string;
     output: string;
-    recognizedQueryString?: string;
-    rateLimiting?: RateLimiting;
+    recognizedQueryString: string[];
+    rateLimiting: RateLimiting;
     customCombiner?: string;
     concurrentCalls?: number;
-    headers?: string[];
-    timeoutAndCacheTTL?: TimeOutAndCacheTTL;
-    customeCiphers?: CustomeCiphers;
-    enableCaching?: boolean;
-    disableJWKSecurity?: boolean;
-    backendEndpoint?: BackendApiCalls[];
+    headers: string[];
+    timeoutAndCacheTTL: TimeOutAndCacheTTL;
+    jwtValidation: JWTValidation;
+    enableSequentialProxy?: boolean;
+    backendEndpoint: BackendApiCalls[];
     stubResponse?: StubResponse;
 }
 
+// PayloadInterfaces
 export interface EditEndpoint {
     index: number;
     endpoint: EndpointInfo;
+}
+
+export interface ChangeEndpointMethod {
+    index: number;
+    method: string;
+}
+
+export interface AddQueryString {
+    index: number;
+    param: string;
+}
+
+export interface RemoveQueryString {
+    endpointIndex: number;
+    queryIndex: number;
+}
+
+export interface AddHeader {
+    index: number;
+    param: string;
+}
+
+export interface RemoveHeader {
+    endpointIndex: number;
+    queryIndex: number;
+}
+
+export interface AddScopes {
+    index: number;
+    scope: string;
+}
+
+export interface RemoveScopes {
+    endpointIndex: number;
+    scopeIndex: number;
+}
+
+export interface AddAudience {
+    index: number;
+    audience: string;
+}
+
+export interface RemoveAudience {
+    endpointIndex: number;
+    audIndex: number;
+}
+
+export interface AddRole {
+    index: number;
+    role: string;
+}
+
+export interface RemoveRole {
+    endpointIndex: number;
+    roleIndex: number;
+}
+
+export interface AddFingerprint {
+    index: number;
+    fingerprint: string;
+}
+
+export interface RemoveFingerprint {
+    endpointIndex: number;
+    fingerprintIndex: number;
+}
+
+export interface ModifyCipherSuites {
+    endpointIndex: number;
+    customCiphers: string[];
+}
+
+export interface ModifyJWT {
+    endpointIndex: number;
+    jwtValidation: JWTValidation;
+}
+
+export interface ModifyMatcher {
+    endpointIndex: number;
+    matcher: string;
 }

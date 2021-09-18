@@ -1,0 +1,1 @@
+export { ServiceDiscoveryPage } from './page';

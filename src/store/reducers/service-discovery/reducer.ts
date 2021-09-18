@@ -1,9 +1,12 @@
 /* eslint-disable */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ETCDMiddleware } from './interfaces';
+import { ETCDMiddleware, ServiceDiscovery } from './interfaces';
 
-const initialState: ETCDMiddleware = {
-    availableETCDMachines: '',
+const initialState: ServiceDiscovery = {
+    etcdMiddleware: {
+        enable: false,
+        availableETCDMachines: [''],
+    },
 };
 
 const serviceDiscAndHostsSlice = createSlice({
@@ -11,9 +14,15 @@ const serviceDiscAndHostsSlice = createSlice({
     initialState,
     reducers: {
         modifyETCDMiddleware(state, action: PayloadAction<ETCDMiddleware>) {
-            state = action.payload;
+            state.etcdMiddleware = action.payload;
+        },
+        addETCDMachines(state, action: PayloadAction<string>) {
+            state.etcdMiddleware.availableETCDMachines?.push(action.payload);
+        },
+        removeETCDMachines(state, action: PayloadAction<number>) {
+            state.etcdMiddleware.availableETCDMachines?.splice(action.payload, 1);
         },
     },
 });
-export const { modifyETCDMiddleware } = serviceDiscAndHostsSlice.actions;
+export const { modifyETCDMiddleware, addETCDMachines, removeETCDMachines } = serviceDiscAndHostsSlice.actions;
 export default serviceDiscAndHostsSlice.reducer;

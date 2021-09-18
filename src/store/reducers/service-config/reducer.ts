@@ -1,6 +1,5 @@
 /* eslint-disable */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { max } from 'lodash';
 import {
     BotDetector,
     Cors,
@@ -101,19 +100,19 @@ const serviceConfSlice = createSlice({
             state.botDetector?.whitelist?.push(action.payload);
         },
         removeBotDetectorWhiteListInfo(state, action: PayloadAction<number>) {
-            state.botDetector?.whitelist?.splice(action.payload);
+            state.botDetector?.whitelist?.splice(action.payload, 1);
         },
         addBotDetectorBlackListInfo(state, action: PayloadAction<string>) {
             state.botDetector?.blacklist?.push(action.payload);
         },
         removeBotDetectorBlackListInfo(state, action: PayloadAction<number>) {
-            state.botDetector?.blacklist?.splice(action.payload);
+            state.botDetector?.blacklist?.splice(action.payload, 1);
         },
         addBotDetectorPatternsInfo(state, action: PayloadAction<string>) {
             state.botDetector?.patterns?.push(action.payload);
         },
         removeBotDetectorPatternsInfo(state, action: PayloadAction<number>) {
-            state.botDetector?.patterns?.splice(action.payload);
+            state.botDetector?.patterns?.splice(action.payload, 1);
         },
         modifyBotDetector(state, action: PayloadAction<BotDetector>) {
             state.botDetector = action.payload;
@@ -126,25 +125,25 @@ const serviceConfSlice = createSlice({
             state.cors.allowedMethods.push(action.payload);
         },
         removeCorsAllowedMethods(state, action: PayloadAction<number>) {
-            state.cors.allowedMethods.splice(action.payload);
+            state.cors.allowedMethods.splice(action.payload, 1);
         },
         addCorsAllowedOrigins(state, action: PayloadAction<string>) {
             state.cors.allowedOrigins.push(action.payload);
         },
         removeCorsAllowedOrigins(state, action: PayloadAction<number>) {
-            state.cors.allowedOrigins.splice(action.payload);
+            state.cors.allowedOrigins.splice(action.payload, 1);
         },
         addCorsAllowedHeaders(state, action: PayloadAction<string>) {
             state.cors.allowedHeaders.push(action.payload);
         },
         removeCorsAllowedHeaders(state, action: PayloadAction<number>) {
-            state.cors.allowedHeaders.splice(action.payload);
+            state.cors.allowedHeaders.splice(action.payload, 1);
         },
         addCorsExposeHeaders(state, action: PayloadAction<string>) {
             state.cors.exposeHeaders.push(action.payload);
         },
         removeCorsExposeHeaders(state, action: PayloadAction<number>) {
-            state.cors.exposeHeaders.splice(action.payload);
+            state.cors.exposeHeaders.splice(action.payload, 1);
         },
         // HTTPCLient
         modifyHTTPClientSettings(state, action: PayloadAction<HTTPClientSettings>) {
