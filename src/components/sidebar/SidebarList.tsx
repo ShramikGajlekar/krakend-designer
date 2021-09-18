@@ -96,7 +96,7 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): 
         let endpoint: EndpointInfo = {
             endpoint: '/new-endpoint',
             method: allowedMethods[0][0],
-            output: encodingOptions[0][0],
+            output: encodingOptions[0][1],
             recognizedQueryString: [''],
             rateLimiting: {
                 enabled: false,
@@ -125,10 +125,24 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): 
                 fingerPrints: [''],
                 customCipherSuites: {
                     enabled: false,
-                    customCiphers: [''],
+                    customCiphers: [],
                 },
                 enableCaching: false,
                 disableJWKSecurity: false,
+            },
+            jwtSigning: {
+                enable: false,
+                algorithm: '',
+                jwkURI: '',
+                keysToSign: [''],
+                keyID: '',
+                customCipherSuites: {
+                    enabled: false,
+                    customCiphers: [],
+                },
+                fingerPrints: [''],
+                disableJWKSecurity: false,
+                fullSerialization: false,
             },
             enableSequentialProxy: false,
             backendEndpoint: [],

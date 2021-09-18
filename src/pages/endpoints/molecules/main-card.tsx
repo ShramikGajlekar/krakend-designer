@@ -43,11 +43,13 @@ import {
     removeQueryString,
     addHeader,
     removeHeader,
+    modifyOutput,
 } from '../../../store/reducers/endpoints/reducer';
 import TextInputArray from '../../../components/ui-molecules/text-input-array';
 import { EndpointInfo } from '../../../store/reducers/endpoints/interfaces';
 import { Chip, Dialog, Divider, MenuItem, MenuProps } from '@material-ui/core';
 import { allowedMethods, encodingOptions } from '../../service-configuration/constants';
+import { deepClone } from '../../../util';
 
 const useStyles = makeStyles((theme) => ({
     labelServiceName: {
@@ -126,23 +128,23 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
     const dispatch = useAppDispatch();
 
     const handleAddMoreQueryString = () => {
-        dispatch(addQueryString({ index: endpointIndex, param: '' }));
+        dispatch(addQueryString({ endpointIndex: endpointIndex, param: '' }));
     };
 
     const handleRemoveQueryString = (index: number) => {
-        dispatch(removeQueryString({ endpointIndex: endpointIndex, queryIndex: index }));
+        dispatch(removeQueryString({ endpointIndex: endpointIndex, paramIndex: index }));
     };
 
     const handleAddMoreHeaders = () => {
-        dispatch(addHeader({ index: endpointIndex, param: '' }));
+        dispatch(addHeader({ endpointIndex: endpointIndex, param: '' }));
     };
 
     const handleRemoveHeader = (index: number) => {
-        dispatch(removeHeader({ endpointIndex: endpointIndex, queryIndex: index }));
+        dispatch(removeHeader({ endpointIndex: endpointIndex, paramIndex: index }));
     };
 
     const handleChangeEndpoint = (event: React.ChangeEvent<HTMLInputElement>, eventType: string, index: number) => {
-        let changedEndpoint: EndpointInfo = JSON.parse(JSON.stringify(endpointInfo));
+        let changedEndpoint = deepClone(endpointInfo);
 
         let list: string[] = [];
         switch (eventType) {
@@ -190,7 +192,11 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
     };
 
     const handleChangeEndpointMethod = (event: React.ChangeEvent<{ value: unknown }>) => {
-        dispatch(modifyMethod({ index: endpointIndex, method: event.target.value as string }));
+        dispatch(modifyMethod({ endpointIndex: endpointIndex, param: event.target.value as string }));
+    };
+
+    const handleChangeEndpointOutput = (event: React.ChangeEvent<{ value: unknown }>) => {
+        dispatch(modifyOutput({ endpointIndex: endpointIndex, param: event.target.value as string }));
     };
 
     const renderThrottlingDialog = (): JSX.Element => {
@@ -398,25 +404,15 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
         );
     };
 
-    // const renderJWTJWKInputs = () => {
-    //     return (
-    //         <Grid container spacing={2}>
-    //             <Grid item className={classes.gridItem} sm={6}>
-    //                 <JWTSigningCard endpointIndex={endpointIndex} />
-    //             </Grid>
-    //         </Grid>
-    //     );
-    // };
-
     return (
         <div>
             <Card className={classes.card} variant="outlined" style={{ boxShadow: '10px 0px 10px 0px grey' }}>
                 <CardContent className={classes.cardTitle}>
-                    <div className={classes.labelServiceName}>{'Service Name'}</div>
+                    <div className={classes.labelServiceName}>{'Endpoint settings'}</div>
                 </CardContent>
                 <Divider />
                 <CardContent>
-                    <Grid container direction={'row'} spacing={2}>
+                    <Grid container direction={'row'} spacing={4}>
                         <Grid item className={classes.gridItem} sm={6}>
                             <TextField
                                 value={endpointInfo.endpoint}
@@ -450,24 +446,24 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
                         </Grid>
                         <Grid item className={classes.gridItem} sm={3}>
                             <FormControl className={classes.formControl}>
-                                <InputLabel id="endpoint-method-label"> Method</InputLabel>
+                                <InputLabel id="endpoint-output-label"> Output</InputLabel>
                                 <Select
-                                    labelId="endpoint-method-label"
+                                    labelId="endpoint-output-label"
                                     id="endpoint-method"
-                                    value={endpointInfo.method}
+                                    value={endpointInfo.output}
                                     label="Method"
-                                    onChange={handleChangeEndpointMethod}
+                                    onChange={handleChangeEndpointOutput}
                                 >
                                     {encodingOptions.map((option) => (
-                                        <MenuItem key={'options' + option[1]} value={option[0]}>
-                                            {option[1]}
+                                        <MenuItem key={'options' + option[1]} value={option[1]}>
+                                            {option[0]}
                                         </MenuItem>
                                     ))}
                                 </Select>
                             </FormControl>
                         </Grid>
                     </Grid>
-                    <Grid container direction={'row'} spacing={2}>
+                    <Grid container direction={'row'} spacing={4}>
                         <Grid item className={classes.gridItem} sm={6}>
                             <TextInputArray
                                 inputType="text"
@@ -492,7 +488,7 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
                             />
                         </Grid>
                         <Grid item className={classes.gridItem} sm={3}>
-                            <Grid container direction={'row'} spacing={2}>
+                            <Grid container direction={'row'} spacing={4}>
                                 <Grid item className={classes.gridItem} sm={12}>
                                     <Button
                                         variant="contained"
@@ -508,7 +504,7 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
                             </Grid>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={3}>
-                            <Grid container direction={'row'} spacing={2}>
+                            <Grid container direction={'row'} spacing={4}>
                                 <Grid item className={classes.gridItem} sm={12}>
                                     <Button
                                         variant="contained"
@@ -525,7 +521,7 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
                         </Grid>
                     </Grid>
 
-                    <Grid container direction={'row'} spacing={2}>
+                    <Grid container direction={'row'} spacing={4}>
                         <Grid item className={classes.gridItem} sm={3}>
                             <TextInputArray
                                 inputType="text"
@@ -573,7 +569,7 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
                             </p>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={3}>
-                            <Grid container direction={'row'} spacing={2}>
+                            <Grid container direction={'row'} spacing={4}>
                                 <Grid item className={classes.gridItem} sm={12}>
                                     <Button
                                         variant="contained"
@@ -589,7 +585,7 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
                             </Grid>
                         </Grid>
                         <Grid item className={classes.gridItem} sm={3}>
-                            <Grid container direction={'row'} spacing={2}>
+                            <Grid container direction={'row'} spacing={4}>
                                 <Grid item className={classes.gridItem} sm={12}>
                                     <Button
                                         variant="contained"

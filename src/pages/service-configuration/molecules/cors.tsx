@@ -38,6 +38,7 @@ import {
 } from '../../../store/reducers/service-config/reducer';
 import { Cors } from '../../../store/reducers/service-config/interfaces';
 import TextInputArray from '../../../components/ui-molecules/text-input-array';
+import { deepClone } from '../../../util';
 
 const useStyles = makeStyles((theme) => ({
     labelServiceName: {
@@ -132,15 +133,7 @@ export const CorsCard = (): JSX.Element => {
     };
 
     const handleChangeCorsConfig = (event: React.ChangeEvent<HTMLInputElement>, eventType: string, index: number) => {
-        let corsConfigChanged: Cors = {
-            enableCors: corsConfig.enableCors,
-            allowCredentials: corsConfig.allowCredentials,
-            allowedHeaders: corsConfig.allowedHeaders,
-            allowedMethods: corsConfig.allowedMethods,
-            allowedOrigins: corsConfig.allowedOrigins,
-            maxAge: corsConfig.maxAge,
-            exposeHeaders: corsConfig.exposeHeaders,
-        };
+        let corsConfigChanged = deepClone(corsConfig);
         let list: string[] = [];
 
         switch (eventType) {

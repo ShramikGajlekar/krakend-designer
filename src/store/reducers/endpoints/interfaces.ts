@@ -34,6 +34,18 @@ export interface JWTValidation {
     disableJWKSecurity: boolean;
 }
 
+export interface JWTSigning {
+    enable: boolean;
+    algorithm: string;
+    jwkURI: string;
+    keysToSign: string[];
+    keyID: string;
+    customCipherSuites: CustomCiphers;
+    fingerPrints: string[];
+    disableJWKSecurity: boolean;
+    fullSerialization: boolean;
+}
+
 export interface BackendRateLimiting {
     maxRateLimit: number;
     capacity: number;
@@ -175,6 +187,7 @@ export interface EndpointInfo {
     headers: string[];
     timeoutAndCacheTTL: TimeOutAndCacheTTL;
     jwtValidation: JWTValidation;
+    jwtSigning: JWTSigning;
     enableSequentialProxy?: boolean;
     backendEndpoint: BackendApiCalls[];
     stubResponse?: StubResponse;
@@ -191,19 +204,9 @@ export interface ChangeEndpointMethod {
     method: string;
 }
 
-export interface AddQueryString {
-    index: number;
-    param: string;
-}
-
 export interface RemoveQueryString {
     endpointIndex: number;
     queryIndex: number;
-}
-
-export interface AddHeader {
-    index: number;
-    param: string;
 }
 
 export interface RemoveHeader {
@@ -211,19 +214,9 @@ export interface RemoveHeader {
     queryIndex: number;
 }
 
-export interface AddScopes {
-    index: number;
-    scope: string;
-}
-
 export interface RemoveScopes {
     endpointIndex: number;
     scopeIndex: number;
-}
-
-export interface AddAudience {
-    index: number;
-    audience: string;
 }
 
 export interface RemoveAudience {
@@ -231,19 +224,9 @@ export interface RemoveAudience {
     audIndex: number;
 }
 
-export interface AddRole {
-    index: number;
-    role: string;
-}
-
 export interface RemoveRole {
     endpointIndex: number;
     roleIndex: number;
-}
-
-export interface AddFingerprint {
-    index: number;
-    fingerprint: string;
 }
 
 export interface RemoveFingerprint {
@@ -256,12 +239,27 @@ export interface ModifyCipherSuites {
     customCiphers: string[];
 }
 
-export interface ModifyJWT {
+export interface ModifyJWTValidation {
     endpointIndex: number;
     jwtValidation: JWTValidation;
+}
+
+export interface ModifyJWTSigning {
+    endpointIndex: number;
+    jwtSigning: JWTSigning;
 }
 
 export interface ModifyMatcher {
     endpointIndex: number;
     matcher: string;
+}
+
+export interface EndpointSettingsArrayStringAdder {
+    endpointIndex: number;
+    param: string;
+}
+
+export interface EndpointSettingsArrayRemover {
+    endpointIndex: number;
+    paramIndex: number;
 }
