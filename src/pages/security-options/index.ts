@@ -1,0 +1,1 @@
+export { SecurityOptionsPage } from './page';

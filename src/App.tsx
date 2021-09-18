@@ -17,7 +17,6 @@ function App(): JSX.Element {
 
     const sidebarOptions: SidebarProps = {
         sidebarListOptions: {
-            title: 'Krakdend Designer',
             disabled: true,
         },
     };

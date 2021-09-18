@@ -1,7 +1,7 @@
 /* eslint-disable */
 export interface SecurityOptionsState {
-    oauthSetting?: OauthSettings;
-    securityHeaders?: SecurityHeaders;
+    oauthSetting: OauthSettings;
+    securityHeaders: SecurityHeaders;
 }
 
 export interface OauthSettings {

@@ -2,6 +2,7 @@ import Dashboard from './dashboard';
 import { ServiceConfigPage } from './service-configuration';
 import { ServiceDiscoveryPage } from './service-discovery';
 import { EndpointConfigPage } from './endpoints';
+import { SecurityOptionsPage } from './security-options';
 
 const routes = [
     {
@@ -27,6 +28,12 @@ const routes = [
         path: ['/endpoints/:endpointIndex'],
         exact: true,
         component: EndpointConfigPage,
+    },
+    {
+        id: 4,
+        path: ['/security-options'],
+        exact: true,
+        component: SecurityOptionsPage,
     },
 ];
 
