@@ -20,7 +20,7 @@ interface ITextInputArrayProps {
     disable: any;
     // eslint-disable-next-line
     disableRemove: any;
-    viewAddMoreButton?: boolean;
+    viewAddMoreButton?: true | false;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -60,17 +60,12 @@ const TextInputArray: React.FunctionComponent<ITextInputArrayProps> = ({
             {arr.map((elem, index) => {
                 return (
                     <>
-                        <Grid
-                            key={name + '-' + index.toString()}
-                            container
-                            spacing={1}
-                            direction="row"
-                            alignItems="flex-start"
-                        >
+                        <Grid container spacing={1} direction="row" alignItems="flex-start">
                             <Grid item sm={10}>
                                 <TextField
                                     type={inputType}
                                     fullWidth
+                                    key={name + '-' + index.toString()}
                                     value={elem}
                                     id={name + '-input-change-' + index.toString()}
                                     variant="outlined"
@@ -98,19 +93,25 @@ const TextInputArray: React.FunctionComponent<ITextInputArrayProps> = ({
                     </>
                 );
             })}
-            <Grid container spacing={4} direction="row" alignItems="flex-start">
-                <Grid item sm={1}>
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        disabled={disable()}
-                        onClick={handleAddMoreElementInArray}
-                    >
-                        +
-                    </Button>
-                </Grid>
-            </Grid>
-            <br></br>
+            {viewAddMoreButton ? (
+                <>
+                    <Grid container spacing={4} direction="row" alignItems="flex-start">
+                        <Grid item sm={1}>
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                disabled={disable()}
+                                onClick={handleAddMoreElementInArray}
+                            >
+                                +
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    <br></br>
+                </>
+            ) : (
+                <></>
+            )}
         </>
     );
 };
