@@ -32,6 +32,11 @@ const useStyles = makeStyles((theme: Theme) =>
         nested: {
             paddingLeft: theme.spacing(4),
         },
+        link: {
+            color: 'black',
+            display: 'flex',
+            textDecoration: 'none',
+        },
     }),
 );
 
@@ -174,21 +179,26 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): 
                 <ListItemIcon>
                     <DashboardIcon />
                 </ListItemIcon>
-                <ListItemText primary={SidebarItemsEnum.DASHBOARD} />
+                <Link className={classes.link} to="/dashboard">
+                    <ListItemText primary={SidebarItemsEnum.DASHBOARD} />
+                </Link>
             </ListItem>
             <ListItem button key={SidebarItemsEnum.SERVICE_CONFIG}>
                 <ListItemIcon>
                     <BuildIcon />
                 </ListItemIcon>
-                <ListItemText primary={SidebarItemsEnum.SERVICE_CONFIG} />
+                <Link className={classes.link} to="/service-configuration">
+                    <ListItemText primary={SidebarItemsEnum.SERVICE_CONFIG} />
+                </Link>
             </ListItem>
             <ListItem button key={SidebarItemsEnum.SERVICE_DISCOVERY} disabled={disabled}>
                 <ListItemIcon>
                     <LanguageIcon />
                 </ListItemIcon>
-                <ListItemText primary={SidebarItemsEnum.SERVICE_DISCOVERY} />
+                <Link className={classes.link} to="/service-discovery">
+                    <ListItemText primary={SidebarItemsEnum.SERVICE_DISCOVERY} />
+                </Link>
             </ListItem>
-
             <ListItem button key={SidebarItemsEnum.ENDPOINTS} onClick={toggleEndpointsVisiblilty}>
                 <ListItemIcon>
                     <SettingsIcon />
@@ -203,7 +213,7 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): 
                             <ListItemIcon>
                                 <AddCircleIcon />
                             </ListItemIcon>
-                            <Link to={'/endpoints/' + endpoint.index}>
+                            <Link className={classes.link} to={`/endpoints/${endpoint.index}`}>
                                 ({endpoint.method}) {endpoint.endpoint}
                             </Link>
                         </ListItem>
@@ -216,8 +226,15 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): 
                     </ListItem>
                 </List>
             </Collapse>
-
-            <ListItem
+            <ListItem key={SidebarItemsEnum.SECURITY_OPTIONS} button disabled={disabled}>
+                <ListItemIcon>
+                    <SecurityIcon />
+                </ListItemIcon>
+                <Link className={classes.link} to="/security-options/">
+                    <ListItemText primary={SidebarItemsEnum.SECURITY_OPTIONS} />
+                </Link>
+            </ListItem>
+            {/* <ListItem
                 button
                 key={SidebarItemsEnum.SECURITY_OPTIONS}
                 disabled={disabled}
@@ -244,12 +261,15 @@ const SidebarList: FunctionComponent<SidebarListProps> = ({ title, disabled }): 
                         <ListItemText primary={SidebarItemsEnum.SECURITY_HEADERS} />
                     </ListItem>
                 </List>
-            </Collapse>
+            </Collapse> */}
+            {/* //TODO: variable driven */}
             <ListItem key={SidebarItemsEnum.LOGGING_METRICS} button disabled={disabled}>
                 <ListItemIcon>
                     <AssessmentIcon />
                 </ListItemIcon>
-                <ListItemText primary={SidebarItemsEnum.LOGGING_METRICS} />
+                <Link title={SidebarItemsEnum.SECURITY_OPTIONS} className={classes.link} to="/logging-metrics/">
+                    <ListItemText primary={SidebarItemsEnum.LOGGING_METRICS} />
+                </Link>
             </ListItem>
         </List>
     );

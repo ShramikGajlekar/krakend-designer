@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(5),
     },
     cardTitle: {
-        backgroundColor: '#5E6CA1',
+        backgroundColor: theme.palette.primary.main,
         color: 'white',
     },
     removeButton: {
@@ -591,7 +591,7 @@ export const JWTValidationCard: React.FunctionComponent<IJWTValidationCardProps>
     };
     return (
         <div>
-            <Card className={classes.card} variant="outlined" style={{ boxShadow: '10px 0px 10px 0px grey' }}>
+            <Card className={classes.card}>
                 <CardContent className={classes.cardTitle}>
                     <Grid container spacing={1} direction="row" alignItems="flex-start" justifyContent="center">
                         <Grid item sm={12}>

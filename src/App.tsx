@@ -17,7 +17,7 @@ function App(): JSX.Element {
 
     const sidebarOptions: SidebarProps = {
         sidebarListOptions: {
-            disabled: true,
+            disabled: false,
         },
     };
     return (

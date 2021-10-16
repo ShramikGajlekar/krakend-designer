@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(5),
     },
     cardTitle: {
-        backgroundColor: '#5E6CA1',
+        backgroundColor: theme.palette.primary.main,
         color: 'white',
     },
     removeButton: {
