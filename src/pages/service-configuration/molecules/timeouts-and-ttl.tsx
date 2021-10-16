@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(5),
     },
     cardTitle: {
-        backgroundColor: '#5E6CA1',
+        backgroundColor: theme.palette.primary.main,
         color: 'white',
     },
 }));
@@ -53,7 +53,7 @@ export const TimeOutTTLCard = (): JSX.Element => {
 
     return (
         <div>
-            <Card className={classes.card} variant="outlined" style={{ boxShadow: '10px 0px 10px 0px grey' }}>
+            <Card className={classes.card}>
                 <CardContent className={classes.cardTitle}>
                     <div className={classes.labelServiceName}>{'Timeouts and TTL'}</div>
                 </CardContent>
