@@ -27,7 +27,7 @@ export interface SecurityHeaders {
     sslProxyHeaders: SSLProxyHeader[];
     maxAge: number;
     includeSubdomains: boolean;
-    clickJacking?: ClickJacking;
+    clickJacking: ClickJacking;
     publicKeyPins: string;
     mimeSniffPrevention: boolean;
     xssProtection: XSSProtection;
