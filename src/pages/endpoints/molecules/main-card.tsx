@@ -271,9 +271,9 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
             <Dialog
                 open={openTimeOutsAndCache}
                 onClose={handleCloseTimeOutsAndCache}
-                aria-labelledby="form-throttling-dialog"
+                aria-labelledby="form-timeout-dialog"
             >
-                <DialogTitle id="form-PipeCompositionoverride-dialog-title">
+                <DialogTitle id="form-timeout-dialog-title">
                     Override global configuration for {endpointInfo.endpoint}
                 </DialogTitle>
                 <p>
@@ -364,35 +364,32 @@ export const EndpointCard: React.FunctionComponent<IEndpointCardProps> = ({ endp
                     If you have a custom combiner configure it here to modify the proxy pipe with your custom
                     configuration
                 </p>
-                {endpointInfo.rateLimiting.enabled ? (
-                    <>
-                        <DialogContent>
-                            <TextField
-                                value={endpointInfo.customCombiner}
-                                fullWidth
-                                label="Custom Combiner"
-                                id="endpoints-rate-limiting-rate-limit"
-                                variant="outlined"
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                                    handleChangeEndpoint(e, changeTypeCustomCombiner, 0)
-                                }
-                                placeholder="combiner name"
-                            />
-                            <DialogContentText>
-                                Specify the combiner for merging the backend responses.
-                            </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleClosePipeCompositionOverride} color="primary">
-                                Close
-                            </Button>
-                        </DialogActions>
-                    </>
-                ) : (
-                    <></>
-                )}
+
+                <DialogContent>
+                    <TextField
+                        value={endpointInfo.customCombiner}
+                        fullWidth
+                        label="Custom Combiner"
+                        id="endpoints-pipe-composition"
+                        variant="outlined"
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            handleChangeEndpoint(e, changeTypeCustomCombiner, 0)
+                        }
+                        placeholder="combiner name"
+                    />
+                    <DialogContentText>Specify the combiner for merging the backend responses.</DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClosePipeCompositionOverride} color="primary">
+                        Close
+                    </Button>
+                </DialogActions>
             </Dialog>
         );
+    };
+
+    const renderSecurityHeadersOverrideDialog = (): JSX.Element => {
+        return <></>;
     };
 
     const renderDialogInputs = (): JSX.Element => {
